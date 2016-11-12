@@ -1,0 +1,32 @@
+{
+  "REGISTER": {
+    "TITLE": "Create an account",
+    "NAME": "Name",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "PASSWORD_CONFIRM": "Password (Confirm)",
+    "READ_ACCEPT": "I read and accept",
+    "TERMS_COND": "terms and conditions",
+    "CREATE_ACCOUNT": "CREATE MY ACCOUNT",
+    "ALREADY_HAVE": "Already have an account?",
+    "LOGIN": "Log in",
+    "NIC": "NIC",
+    "MOBILE_NUMBER": "Mobile Number",
+    "DOC_REG_NUMBER":"Registration Number",
+    "ERRORS": {
+      "USERNAME_REQUIRED": "Username field is required",
+      "FIRST_NAME_REQUIRED": "First Name field is required",
+      "LAST_NAME_REQUIRED": "Last Name field is required",
+      "EMAIL_REQUIRED": "Email field is required",
+      "EMAIL_MUST_VALID": "Email must be a valid e-mail address",
+      "PASSWORD_REQUIRED": "Password field is required",
+      "PASSWORD_CONFIRM_REQUIRED": "Password confirm field is required",
+      "TERMS_REQUIRED": "You must accept terms and conditions before submitting the form",
+      "NIC_REQUIRED": "NIC field is required",
+      "MOBILE_NUMBER_REQUIRED": "Mobile Number field is required",
+      "DOC_REG_NUMBER_REQUIRED":"Registration number field is required"
+    }
+  }
+}

@@ -21,6 +21,6 @@
             'app.quick-panel',
 
             // Sample
-            'app.sample'
+            'app.pages'
         ]);
 })();

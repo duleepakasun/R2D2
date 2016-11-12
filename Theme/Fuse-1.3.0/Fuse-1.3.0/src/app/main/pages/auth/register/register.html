@@ -1,0 +1,169 @@
+<div id="register" class="flex-scrollable" layout="column" ms-scroll>
+  <div id="register-form-wrapper" layout="column" layout-align="center center">
+    <div id="register-form" class="md-whiteframe-8dp">
+      <div class="logo md-accent-bg">
+        <span>DHE</span>
+      </div>
+
+      <div class="title" translate="REGISTER.TITLE">Create an account</div>
+
+
+      <form name="registerForm" novalidate>
+
+        <md-input-container class="md-block">
+          <md-select name="userType" placeholder="Select User Type" ng-model="vm.userType" required>
+            <md-option value="1">Patient</md-option>
+            <md-option value="2">Doctor</md-option>
+          </md-select>
+          <div class="errors" ng-messages="registerForm.userType.$error" ng-if="registerForm.$dirty">
+            <div ng-message="required">Required</div>
+          </div>
+        </md-input-container>
+
+
+        <md-input-container class="md-block" md-no-float>
+          <input name="firstName" ng-model="vm.form.username" placeholder="First Name"
+                 translate translate-attr-placeholder="REGISTER.FIRST_NAME"
+                 required>
+
+          <div ng-messages="registerForm.firstName.$error" role="alert">
+            <div ng-message="required">
+              <span translate="REGISTER.ERRORS.FIRST_NAME_REQUIRED">firstName field is required</span>
+            </div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" md-no-float>
+          <input name="lastName" ng-model="vm.form.lastName" placeholder="Last name"
+                 translate translate-attr-placeholder="REGISTER.LAST_NAME"
+                 required>
+
+          <div ng-messages="registerForm.lastName.$error" role="alert">
+            <div ng-message="required">
+              <span translate="REGISTER.ERRORS.LAST_NAME_REQUIRED">Last name field is required</span>
+            </div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" md-no-float>
+          <input name="nic" ng-model="vm.form.nic" placeholder="NIC"
+                 translate translate-attr-placeholder="REGISTER.NIC"
+                 required>
+
+          <div ng-messages="registerForm.nic.$error" role="alert">
+            <div ng-message="required">
+              <span translate="REGISTER.ERRORS.NIC_REQUIRED">NIC field is required</span>
+            </div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" md-no-float>
+          <input name="mobileNo" ng-model="vm.form.mobileNo" placeholder="Mobile"
+                 translate translate-attr-placeholder="REGISTER.MOBILE_NUMBER"
+                 required>
+
+          <div ng-messages="registerForm.nic.$error" role="alert">
+            <div ng-message="required">
+              <span translate="REGISTER.ERRORS.MOBILE_NUMBER_REQUIRED">Mobile Number field is required</span>
+            </div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" md-no-float>
+          <md-autocomplete ng-if="vm.userType==2"
+                           ng-disabled="vm.isDisabled"
+                           md-no-cache="true"
+                           md-selected-item="vm.selectedItem"
+                           md-search-text-change="vm.searchTextChange(vm.searchText)"
+                           md-search-text="vm.searchText"
+                           md-selected-item-change="vm.selectedItemChange(item)"
+                           md-items="item in vm.querySearch(vm.searchText)"
+                           md-item-text="item.display"
+                           md-min-length="0"
+                           placeholder="What is your special area?">
+            <md-item-template>
+              <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.display}}</span>
+            </md-item-template>
+            <md-not-found>
+              No states matching "{{vm.searchText}}" were found.
+              <a ng-click="vm.newState(vm.searchText)">Create a new one!</a>
+            </md-not-found>
+          </md-autocomplete>
+        </md-input-container>
+
+
+        <md-input-container class="md-block" md-no-float ng-if="vm.userType==2">
+          <input name="docRegNumber" ng-model="vm.form.docRegNumber" placeholder="Registration Number"
+                 translate translate-attr-placeholder="REGISTER.DOC_REG_NUMBER"
+                 required>
+
+          <div ng-messages="registerForm.docRegNumber.$error" role="alert">
+            <div ng-message="required">
+              <span translate="REGISTER.ERRORS.DOC_REG_NUMBER_REQUIRED">Registration number field is required</span>
+            </div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" md-no-float>
+          <input type="email" name="email" ng-model="vm.form.email" placeholder="Email"
+                 translate translate-attr-placeholder="REGISTER.EMAIL"
+                 ng-pattern="/^.+@.+\..+$/" required>
+
+          <div ng-messages="registerForm.email.$error" role="alert" multiple>
+            <div ng-message="required">
+              <span translate="REGISTER.ERRORS.EMAIL_REQUIRED">Email field is required</span>
+            </div>
+            <div ng-message="pattern">
+              <span translate="REGISTER.ERRORS.EMAIL_MUST_VALID">Email must be a valid e-mail address</span>
+            </div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" md-no-float>
+          <input type="password" name="password" ng-model="vm.form.password" placeholder="Password"
+                 translate translate-attr-placeholder="REGISTER.PASSWORD"
+                 required>
+
+          <div ng-messages="registerForm.password.$error" role="alert">
+            <div ng-message="required">
+              <span translate="REGISTER.ERRORS.PASSWORD_REQUIRED">Password field is required</span>
+            </div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" md-no-float>
+          <input type="password" name="passwordConfirm" ng-model="vm.form.passwordConfirm"
+                 placeholder="Password (Confirm)"
+                 translate translate-attr-placeholder="REGISTER.PASSWORD_CONFIRM"
+                 required>
+
+          <div ng-messages="registerForm.passwordConfirm.$error" role="alert">
+            <div ng-message="required">
+              <span translate="REGISTER.ERRORS.PASSWORD_CONFIRM_REQUIRED">Password (Confirm) field is required</span>
+            </div>
+          </div>
+        </md-input-container>
+
+        <div class="terms" layout="row" layout-align="center center">
+          <md-checkbox name="terms" ng-model="data.cb1" aria-label="I read and accept" required></md-checkbox>
+          <div layout="row" layout-sm="column" layout-align="start center">
+            <span translate="REGISTER.READ_ACCEPT">I read and accept</span>
+            <a href="#" class="md-accent-color" translate="REGISTER.TERMS_COND">terms and conditions</a>
+          </div>
+        </div>
+
+        <md-button type="submit" class="md-raised md-accent submit-button" aria-label="CREATE MY ACCOUNT"
+                   ng-disabled="registerForm.$invalid || registerForm.$pristine"
+                   translate="REGISTER.CREATE_ACCOUNT"
+                   translate-attr-aria-label="REGISTER.CREATE_ACCOUNT">
+          CREATE MY ACCOUNT
+        </md-button>
+      </form>
+
+      <div class="login" layout="row" layout-xs="column" layout-align="center center">
+        <span class="text" translate="REGISTER.ALREADY_HAVE">Already have an account?</span>
+        <a class="link" ui-sref="app.pages_auth_login" translate="REGISTER.LOGIN">Log in</a>
+      </div>
+    </div>
+  </div>
+</div>
